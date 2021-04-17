@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;focusgao.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script>
+<meta name="description" content="我们在使用latex撰写论文时，希望可以从tex源码跳到PDF文件相应的位置，查看生成的PDF文件。相反的，如果我们在浏览PDF文件时，希望对某处进行修改，但是手动寻找tex源码对应PDF的位置比较浪费时间，本文可解决上述问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac端基于vscode和skim实现tex与pdf跳转">
+<meta property="og:url" content="https://focusgao.github.io/2021/03/30/latex-pdf/index.html">
+<meta property="og:site_name" content="This is Focus">
+<meta property="og:description" content="我们在使用latex撰写论文时，希望可以从tex源码跳到PDF文件相应的位置，查看生成的PDF文件。相反的，如果我们在浏览PDF文件时，希望对某处进行修改，但是手动寻找tex源码对应PDF的位置比较浪费时间，本文可解决上述问题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-30T13:47:05.000Z">
+<meta property="article:modified_time" content="2021-04-17T12:18:12.185Z">
+<meta property="article:author" content="Focus">
+<meta property="article:tag" content="latex">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://focusgao.github.io/2021/03/30/latex-pdf/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;focusgao.github.io&#x2F;2021&#x2F;03&#x2F;30&#x2F;latex-pdf&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;03&#x2F;30&#x2F;latex-pdf&#x2F;&quot;,&quot;title&quot;:&quot;Mac端基于vscode和skim实现tex与pdf跳转&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Mac端基于vscode和skim实现tex与pdf跳转 | This is Focus</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">This is Focus</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E7%A1%AC%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">软硬件配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VSCode-%E9%85%8D%E7%BD%AE%EF%BC%88settings-json%E6%96%87%E4%BB%B6%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">VSCode 配置（settings.json文件）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Skim-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">Skim 配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text"></span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Focus"
+      src="/images/icon.JPG">
+  <p class="site-author-name" itemprop="name">Focus</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/focusgao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;focusgao" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:sdugfk@sina.com" title="E-Mail → mailto:sdugfk@sina.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://focusgao.github.io/2021/03/30/latex-pdf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.JPG">
+      <meta itemprop="name" content="Focus">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="This is Focus">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Mac端基于vscode和skim实现tex与pdf跳转
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-30 21:47:05" itemprop="dateCreated datePublished" datetime="2021-03-30T21:47:05+08:00">2021-03-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-04-17 20:18:12" itemprop="dateModified" datetime="2021-04-17T20:18:12+08:00">2021-04-17</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>我们在使用latex撰写论文时，希望可以从tex源码跳到PDF文件相应的位置，查看生成的PDF文件。相反的，如果我们在浏览PDF文件时，希望对某处进行修改，但是手动寻找tex源码对应PDF的位置比较浪费时间，本文可解决上述问题。</p>
+<span id="more"></span>
+
+<h3 id="软硬件配置"><a href="#软硬件配置" class="headerlink" title="软硬件配置"></a>软硬件配置</h3><p>​    终端：Macos  11.1</p>
+<p>​    编辑器：VSCode</p>
+<p>​    PDF查看：Skim</p>
+<h3 id="VSCode-配置（settings-json文件）"><a href="#VSCode-配置（settings-json文件）" class="headerlink" title="VSCode 配置（settings.json文件）"></a>VSCode 配置（settings.json文件）</h3><p>Mac端VSCode安装好Latex插件后，对VSCode 进行配置，配置代码如下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置外部PDF预览</span></span><br><span class="line">&quot;latex-workshop.view.pdf.viewer&quot;: &quot;external&quot;,</span><br><span class="line"><span class="comment">// 设置使用skim打开并显示该行，快捷键：CMD+OPT+J</span></span><br><span class="line">    &quot;latex-workshop.view.pdf.external.viewer.command&quot;: &quot;/Applications/Skim.app/Contents/SharedSupport/displayline&quot;,</span><br><span class="line">    &quot;latex-workshop.view.pdf.external.viewer.args&quot;: [</span><br><span class="line">        &quot;0&quot;,</span><br><span class="line">        <span class="string">&quot;%PDF%&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    &quot;latex-workshop.view.pdf.external.synctex.command&quot;: &quot;//Applications/Skim.app/Contents/SharedSupport/displayline&quot;,</span><br><span class="line">    &quot;latex-workshop.view.pdf.external.synctex.args&quot;: [</span><br><span class="line">        &quot;-r&quot;,</span><br><span class="line">        &quot;%LINE%&quot;,</span><br><span class="line">        &quot;%PDF%&quot;,</span><br><span class="line">        &quot;%TEX%&quot;,</span><br><span class="line">    ],</span><br></pre></td></tr></table></figure>
+
+<p>使用方法：将光标移到想要跳转的tex源码处，快捷键 <code> opt+cmd+J</code> 可跳转到PDF文件中对应tex源码的位置 </p>
+<h3 id="Skim-配置"><a href="#Skim-配置" class="headerlink" title="Skim 配置"></a>Skim 配置</h3><p>对Skim设置如下：</p>
+<p>PDF-Tex同步支持：</p>
+<p>预设：选择VSCode</p>
+<p>命令：open</p>
+<p>参数： <code>vscode://file&quot;%file&quot;:%line</code></p>
+<p>使用方法：在Skim打开的PDF文件中，按住快捷键 <code> shift+cmd+鼠标左键点击</code>可跳转到tex源码</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>如果您觉得有用，请我喝杯奶茶吧！</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="Focus 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="Focus 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/latex/" rel="tag"><i class="fa fa-tag"></i> latex</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/05/note/" rel="prev" title="笔记APP推荐">
+                  <i class="fa fa-chevron-left"></i> 笔记APP推荐
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Focus</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
