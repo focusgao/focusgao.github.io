@@ -41,32 +41,6 @@
       </tags>
   </entry>
   <entry>
-    <title>笔记APP推荐</title>
-    <url>/2021/04/05/note/</url>
-    <content><![CDATA[<p>本文总结了自己平时比较常用的几款软件，主要用于日常的文献阅读，做笔记和论文撰写</p>
-<span id="more"></span>
-
-<p>主要分以下四个场景：</p>
-<ol>
-<li>文档类笔记：这类笔记的特点是文字多，有较为清晰的层次逻辑</li>
-<li>手写笔记+OCR识别：这类笔记主要面向数学公式相关的笔记</li>
-<li>云同步</li>
-<li>提醒事项</li>
-</ol>
-<p>推荐的软件有：Typora，GoodNotes，Mathnip，Onedrive，滴答清单</p>
-<ol>
-<li>推荐使用Markdown进行笔记撰写，编辑器可用Typora，这款编辑器界面简洁，支持Mac/PC等多平台，此外在Mac平台还有一款熊掌记（Bear），UI十分漂亮，但是同步需要订阅且只支持苹果设备，为知笔记，印象笔记等也支持云同步和Markdown语法，功能十分完善，但也正因为如此，其复杂的功能反而导致学习成本的增加与日常使用的复杂</li>
-<li>手写笔记：Ipad + Apple pencil，软件推荐GoodNotes（50块），可以通过iCloud等云同步，也可以导出PDF进行分享。嫌贵的小伙伴可以考虑OneNote，缺点是同步速度较慢，当我们手写完公式之后，配合Mathpix就可以将手写公式识别为latex语法，写论文时可以省很多功夫</li>
-<li>如果你是学生，正好你的学校有微软教育服务，就可以去申请高达5T的Onedrive 存储空间，用来多设备文件同步，当然，也可以用坚果云代替，坚果云同步速度快</li>
-<li>提醒事项推荐滴答清单，可以智能识别日期，配合apple watch ，多设备同步，体验非常好</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>note</tag>
-        <tag>APP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Optimal Control</title>
     <url>/2021/04/15/OptimalControl/</url>
     <content><![CDATA[<p>本文将对最优控制问题的概念和经典求解方法进行梳理</p>
@@ -142,6 +116,32 @@
       </tags>
   </entry>
   <entry>
+    <title>笔记APP推荐</title>
+    <url>/2021/04/05/note/</url>
+    <content><![CDATA[<p>本文总结了自己平时比较常用的几款软件，主要用于日常的文献阅读，做笔记和论文撰写</p>
+<span id="more"></span>
+
+<p>主要分以下四个场景：</p>
+<ol>
+<li>文档类笔记：这类笔记的特点是文字多，有较为清晰的层次逻辑</li>
+<li>手写笔记+OCR识别：这类笔记主要面向数学公式相关的笔记</li>
+<li>云同步</li>
+<li>提醒事项</li>
+</ol>
+<p>推荐的软件有：Typora，GoodNotes，Mathnip，Onedrive，滴答清单</p>
+<ol>
+<li>推荐使用Markdown进行笔记撰写，编辑器可用Typora，这款编辑器界面简洁，支持Mac/PC等多平台，此外在Mac平台还有一款熊掌记（Bear），UI十分漂亮，但是同步需要订阅且只支持苹果设备，为知笔记，印象笔记等也支持云同步和Markdown语法，功能十分完善，但也正因为如此，其复杂的功能反而导致学习成本的增加与日常使用的复杂</li>
+<li>手写笔记：Ipad + Apple pencil，软件推荐GoodNotes（50块），可以通过iCloud等云同步，也可以导出PDF进行分享。嫌贵的小伙伴可以考虑OneNote，缺点是同步速度较慢，当我们手写完公式之后，配合Mathpix就可以将手写公式识别为latex语法，写论文时可以省很多功夫</li>
+<li>如果你是学生，正好你的学校有微软教育服务，就可以去申请高达5T的Onedrive 存储空间，用来多设备文件同步，当然，也可以用坚果云代替，坚果云同步速度快</li>
+<li>提醒事项推荐滴答清单，可以智能识别日期，配合apple watch ，多设备同步，体验非常好</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>note</tag>
+        <tag>APP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>网站收藏</title>
     <url>/2021/04/07/website/</url>
     <content><![CDATA[<p>对自己平时浏览到的有用的网站进行总结</p>
@@ -162,6 +162,18 @@
 <li><p>马可科夫链：</p>
 <ul>
 <li><a href="https://blog.csdn.net/wmhsjtu/article/details/104100893">马尔科夫链</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h2><ol>
+<li><p>在线流程图</p>
+<ul>
+<li><a href="https://app.diagrams.net/">draw.io</a></li>
+</ul>
+</li>
+<li><p>ping服务器，网站测速</p>
+<ul>
+<li><a href="http://ping.chinaz.com/">网站测速</a></li>
 </ul>
 </li>
 </ol>
