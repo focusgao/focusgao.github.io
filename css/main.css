@@ -2052,6 +2052,14 @@ pre code {
   top: 1.25em;
   width: 4px;
 }
+.post-body p a {
+  color: #0593d3;
+  border-bottom: none;
+}
+.post-body p a:hover {
+  color: #0477ab;
+  text-decoration: underline;
+}
 .post-body {
   font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   overflow-wrap: break-word;
@@ -3074,7 +3082,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #14f16c;
+  background: #608cdf;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
