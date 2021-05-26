@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Lipschitz Continuous</title>
-    <url>/2021/04/12/Lipschitz/</url>
-    <content><![CDATA[<p>Lipschitz连续（条件）在控制领域经常被用到，通常用来分析存在不确定性的问题</p>
-<span id="more"></span>
-
-<h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><p>对于在实数集的函数$f:D\subseteq R \rightarrow R$， 若存在常数$k$，使得 $|f(a)-f(b)\leq K|a-b| \quad \forall a,b\in D|$, 则称$f$符合Lipschitz 条件，对于$f$， 最小的常数$K$ 称为 $f$ 的Lipschitz Constant.</p>
-<p><strong>若$k&lt;1$，$f$ 称为收缩映射</strong></p>
-<p>利普希茨条件也可对任意度量空间的函数定义：</p>
-<p>给定两个度量空间$(X,d_X)$ 和 $(Y,d_Y)$， 其中$d_X$ 代表集合$X$ 上的度（可简单理解为距离函数）， $d_Y$ 代表集合$Y$ 上的度，对于一个函数$f: X\rightarrow Y$ ,如果存在一个实常数$k\geq 0 $ ，有以下式子成立，则称$f$ 是Lipschitz Continuous：</p>
-]]></content>
-      <tags>
-        <tag>academic</tag>
-        <tag>maths</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Optimal Control</title>
     <url>/2021/04/15/OptimalControl/</url>
     <content><![CDATA[<p>本文将对最优控制问题的概念和经典求解方法进行梳理</p>
@@ -89,6 +73,22 @@
       <tags>
         <tag>academic</tag>
         <tag>control</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Lipschitz Continuous</title>
+    <url>/2021/04/12/Lipschitz/</url>
+    <content><![CDATA[<p>Lipschitz连续（条件）在控制领域经常被用到，通常用来分析存在不确定性的问题</p>
+<span id="more"></span>
+
+<h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><p>对于在实数集的函数$f:D\subseteq R \rightarrow R$， 若存在常数$k$，使得 $|f(a)-f(b)\leq K|a-b| \quad \forall a,b\in D|$, 则称$f$符合Lipschitz 条件，对于$f$， 最小的常数$K$ 称为 $f$ 的Lipschitz Constant.</p>
+<p><strong>若$k&lt;1$，$f$ 称为收缩映射</strong></p>
+<p>利普希茨条件也可对任意度量空间的函数定义：</p>
+<p>给定两个度量空间$(X,d_X)$ 和 $(Y,d_Y)$， 其中$d_X$ 代表集合$X$ 上的度（可简单理解为距离函数）， $d_Y$ 代表集合$Y$ 上的度，对于一个函数$f: X\rightarrow Y$ ,如果存在一个实常数$k\geq 0 $ ，有以下式子成立，则称$f$ 是Lipschitz Continuous：</p>
+]]></content>
+      <tags>
+        <tag>academic</tag>
+        <tag>maths</tag>
       </tags>
   </entry>
   <entry>
