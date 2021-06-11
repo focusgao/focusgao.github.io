@@ -1,38 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>通过 AWS 安装SS</title>
-    <url>/2021/05/28/install-ss/</url>
-    <content><![CDATA[<p>AWS （亚马逊云计算服务）新用户可免费使用一年，白嫖怪冲啊！</p>
+    <title>Lipschitz Continuous</title>
+    <url>/2021/04/12/Lipschitz/</url>
+    <content><![CDATA[<p>Lipschitz连续（条件）在控制领域经常被用到，通常用来分析存在不确定性的问题</p>
 <span id="more"></span>
 
-<h2 id="注册AWS账号"><a href="#注册AWS账号" class="headerlink" title="注册AWS账号"></a>注册AWS账号</h2><p>首先准备一张信用卡，AWS的需扣除1美刀验证账户</p>
-<h2 id="选择服务器"><a href="#选择服务器" class="headerlink" title="选择服务器"></a>选择服务器</h2><p>建议选择美国西海岸的服务器（看一下地图），网速会快一点</p>
-<ol>
-<li>登陆控制台，选择EC2服务，点击启动新实例</li>
-<li>选择带有“符合条件的免费餐”的项目，我选择Ubuntu server 18.04</li>
-<li>点击下一步：配置实例详细信息</li>
-<li>点击下一步：添加存储</li>
-<li>点击下一步：添加标签。点击添加标签， 如：键：Name，值：server</li>
-<li>点击下一步：配置安全组。<strong>点击添加规则：选择所有流量，</strong>并在来源一栏填入 <code>0.0.0.0/0</code>，<strong>这一步非常重要</strong></li>
-<li>点击审核和启动</li>
-<li>点击启动，新建一个密钥对，并<strong>好好保存！</strong></li>
-</ol>
-<h2 id="安装SS"><a href="#安装SS" class="headerlink" title="安装SS"></a>安装SS</h2><ol>
-<li><p>找到保存的密钥对，命令行/终端运行</p>
-<p><code>chmod 400 +密钥文件</code></p>
-</li>
-<li><p>连接服务器:找到网页你建立的实例，选择连接，选择SSH客户端即可看到连接的命令</p>
-<p><code>ssh -i &quot;你的密钥.pem&quot; ubuntu@ec2-服务器ID.us-west-1.compute.amazonaws.com</code></p>
-</li>
-<li><p>运行以下命令完成安装：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks.sh https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;teddysun&#x2F;shadowsocks_install&#x2F;master&#x2F;shadowsocks.sh</span><br><span class="line"></span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line"></span><br><span class="line">.&#x2F;shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure></li>
-<li><p>加密可选择aes-256-cfb，密码自己选，端口0-65536之间</p>
-</li>
-</ol>
+<h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><p>对于在实数集的函数$f:D\subseteq R \rightarrow R$， 若存在常数$k$，使得 $|f(a)-f(b)\leq K|a-b| \quad \forall a,b\in D|$, 则称$f$符合Lipschitz 条件，对于$f$， 最小的常数$K$ 称为 $f$ 的Lipschitz Constant.</p>
+<p><strong>若$k&lt;1$，$f$ 称为收缩映射</strong></p>
+<p>利普希茨条件也可对任意度量空间的函数定义：</p>
+<p>给定两个度量空间$(X,d_X)$ 和 $(Y,d_Y)$， 其中$d_X$ 代表集合$X$ 上的度（可简单理解为距离函数）， $d_Y$ 代表集合$Y$ 上的度，对于一个函数$f: X\rightarrow Y$ ,如果存在一个实常数$k\geq 0 $ ，有以下式子成立，则称$f$ 是Lipschitz Continuous：</p>
 ]]></content>
       <tags>
-        <tag>APP</tag>
+        <tag>academic</tag>
+        <tag>maths</tag>
       </tags>
   </entry>
   <entry>
@@ -111,19 +92,38 @@
       </tags>
   </entry>
   <entry>
-    <title>Lipschitz Continuous</title>
-    <url>/2021/04/12/Lipschitz/</url>
-    <content><![CDATA[<p>Lipschitz连续（条件）在控制领域经常被用到，通常用来分析存在不确定性的问题</p>
+    <title>通过 AWS 安装SS</title>
+    <url>/2021/05/28/install-ss/</url>
+    <content><![CDATA[<p>AWS （亚马逊云计算服务）新用户可免费使用一年，白嫖怪冲啊！</p>
 <span id="more"></span>
 
-<h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><p>对于在实数集的函数$f:D\subseteq R \rightarrow R$， 若存在常数$k$，使得 $|f(a)-f(b)\leq K|a-b| \quad \forall a,b\in D|$, 则称$f$符合Lipschitz 条件，对于$f$， 最小的常数$K$ 称为 $f$ 的Lipschitz Constant.</p>
-<p><strong>若$k&lt;1$，$f$ 称为收缩映射</strong></p>
-<p>利普希茨条件也可对任意度量空间的函数定义：</p>
-<p>给定两个度量空间$(X,d_X)$ 和 $(Y,d_Y)$， 其中$d_X$ 代表集合$X$ 上的度（可简单理解为距离函数）， $d_Y$ 代表集合$Y$ 上的度，对于一个函数$f: X\rightarrow Y$ ,如果存在一个实常数$k\geq 0 $ ，有以下式子成立，则称$f$ 是Lipschitz Continuous：</p>
+<h2 id="注册AWS账号"><a href="#注册AWS账号" class="headerlink" title="注册AWS账号"></a>注册AWS账号</h2><p>首先准备一张信用卡，AWS的需扣除1美刀验证账户</p>
+<h2 id="选择服务器"><a href="#选择服务器" class="headerlink" title="选择服务器"></a>选择服务器</h2><p>建议选择美国西海岸的服务器（看一下地图），网速会快一点</p>
+<ol>
+<li>登陆控制台，选择EC2服务，点击启动新实例</li>
+<li>选择带有“符合条件的免费餐”的项目，我选择Ubuntu server 18.04</li>
+<li>点击下一步：配置实例详细信息</li>
+<li>点击下一步：添加存储</li>
+<li>点击下一步：添加标签。点击添加标签， 如：键：Name，值：server</li>
+<li>点击下一步：配置安全组。<strong>点击添加规则：选择所有流量，</strong>并在来源一栏填入 <code>0.0.0.0/0</code>，<strong>这一步非常重要</strong></li>
+<li>点击审核和启动</li>
+<li>点击启动，新建一个密钥对，并<strong>好好保存！</strong></li>
+</ol>
+<h2 id="安装SS"><a href="#安装SS" class="headerlink" title="安装SS"></a>安装SS</h2><ol>
+<li><p>找到保存的密钥对，命令行/终端运行</p>
+<p><code>chmod 400 +密钥文件</code></p>
+</li>
+<li><p>连接服务器:找到网页你建立的实例，选择连接，选择SSH客户端即可看到连接的命令</p>
+<p><code>ssh -i &quot;你的密钥.pem&quot; ubuntu@ec2-服务器ID.us-west-1.compute.amazonaws.com</code></p>
+</li>
+<li><p>运行以下命令完成安装：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks.sh https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;teddysun&#x2F;shadowsocks_install&#x2F;master&#x2F;shadowsocks.sh</span><br><span class="line"></span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line"></span><br><span class="line">.&#x2F;shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure></li>
+<li><p>加密可选择aes-256-cfb，密码自己选，端口0-65536之间</p>
+</li>
+</ol>
 ]]></content>
       <tags>
-        <tag>academic</tag>
-        <tag>maths</tag>
+        <tag>APP</tag>
       </tags>
   </entry>
   <entry>
