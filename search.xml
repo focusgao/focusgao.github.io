@@ -76,6 +76,30 @@
       </tags>
   </entry>
   <entry>
+    <title>Mac端基于vscode和skim实现tex与pdf跳转</title>
+    <url>/2021/03/30/latex-pdf/</url>
+    <content><![CDATA[<p>我们在使用latex撰写论文时，希望可以从tex源码跳到PDF文件相应的位置，查看生成的PDF文件。相反的，如果我们在浏览PDF文件时，希望对某处进行修改，但是手动寻找tex源码对应PDF的位置比较浪费时间，本文可解决上述问题。</p>
+<span id="more"></span>
+
+<h3 id="软硬件配置"><a href="#软硬件配置" class="headerlink" title="软硬件配置"></a>软硬件配置</h3><p>​    终端：Macos  11.1</p>
+<p>​    编辑器：VSCode</p>
+<p>​    PDF查看：Skim</p>
+<h3 id="VSCode-配置（settings-json文件）"><a href="#VSCode-配置（settings-json文件）" class="headerlink" title="VSCode 配置（settings.json文件）"></a>VSCode 配置（settings.json文件）</h3><p>Mac端VSCode安装好Latex插件后，对VSCode 进行配置，配置代码如下</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="comment">//设置外部PDF预览</span></span><br><span class="line">&quot;latex-workshop.view.pdf.viewer&quot;: &quot;external&quot;,</span><br><span class="line"><span class="comment">// 设置使用skim打开并显示该行，快捷键：CMD+OPT+J</span></span><br><span class="line">    &quot;latex-workshop.view.pdf.external.viewer.command&quot;: &quot;/Applications/Skim.app/Contents/SharedSupport/displayline&quot;,</span><br><span class="line">    &quot;latex-workshop.view.pdf.external.viewer.args&quot;: [</span><br><span class="line">        &quot;0&quot;,</span><br><span class="line">        <span class="string">&quot;%PDF%&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    &quot;latex-workshop.view.pdf.external.synctex.command&quot;: &quot;//Applications/Skim.app/Contents/SharedSupport/displayline&quot;,</span><br><span class="line">    &quot;latex-workshop.view.pdf.external.synctex.args&quot;: [</span><br><span class="line">        &quot;-r&quot;,</span><br><span class="line">        &quot;%LINE%&quot;,</span><br><span class="line">        &quot;%PDF%&quot;,</span><br><span class="line">        &quot;%TEX%&quot;,</span><br><span class="line">    ],</span><br></pre></td></tr></table></figure>
+
+<p>使用方法：将光标移到想要跳转的tex源码处，快捷键 <code> opt+cmd+J</code> 可跳转到PDF文件中对应tex源码的位置 </p>
+<h3 id="Skim-配置"><a href="#Skim-配置" class="headerlink" title="Skim 配置"></a>Skim 配置</h3><p>对Skim设置如下：</p>
+<p>PDF-Tex同步支持：</p>
+<p>预设：选择VSCode</p>
+<p>命令：open</p>
+<p>参数： <code>vscode://file&quot;%file&quot;:%line</code></p>
+<p>使用方法：在Skim打开的PDF文件中，按住快捷键 <code> shift+cmd+鼠标左键点击</code>可跳转到tex源码</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+      <tags>
+        <tag>latex</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Lipschitz Continuous</title>
     <url>/2021/04/12/Lipschitz/</url>
     <content><![CDATA[<p>Lipschitz连续（条件）在控制领域经常被用到，通常用来分析存在不确定性的问题</p>
@@ -89,6 +113,32 @@
       <tags>
         <tag>academic</tag>
         <tag>maths</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>笔记APP推荐</title>
+    <url>/2021/04/05/note/</url>
+    <content><![CDATA[<p>本文总结了自己平时比较常用的几款软件，主要用于日常的文献阅读，做笔记和论文撰写</p>
+<span id="more"></span>
+
+<p>主要分以下四个场景：</p>
+<ol>
+<li>文档类笔记：这类笔记的特点是文字多，有较为清晰的层次逻辑</li>
+<li>手写笔记+OCR识别：这类笔记主要面向数学公式相关的笔记</li>
+<li>云同步</li>
+<li>提醒事项</li>
+</ol>
+<p>推荐的软件有：Typora，GoodNotes，Mathnip，Onedrive，滴答清单</p>
+<ol>
+<li>推荐使用Markdown进行笔记撰写，编辑器可用Typora，这款编辑器界面简洁，支持Mac/PC等多平台，此外在Mac平台还有一款熊掌记（Bear），UI十分漂亮，但是同步需要订阅且只支持苹果设备，为知笔记，印象笔记等也支持云同步和Markdown语法，功能十分完善，但也正因为如此，其复杂的功能反而导致学习成本的增加与日常使用的复杂</li>
+<li>手写笔记：Ipad + Apple pencil，软件推荐GoodNotes（50块），可以通过iCloud等云同步，也可以导出PDF进行分享。嫌贵的小伙伴可以考虑OneNote，缺点是同步速度较慢，当我们手写完公式之后，配合Mathpix就可以将手写公式识别为latex语法，写论文时可以省很多功夫</li>
+<li>如果你是学生，正好你的学校有微软教育服务，就可以去申请高达5T的Onedrive 存储空间，用来多设备文件同步，当然，也可以用坚果云代替，坚果云同步速度快</li>
+<li>提醒事项推荐滴答清单，可以智能识别日期，配合apple watch ，多设备同步，体验非常好</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>note</tag>
+        <tag>APP</tag>
       </tags>
   </entry>
   <entry>
@@ -168,56 +218,6 @@
 ]]></content>
       <tags>
         <tag>recommendation</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac端基于vscode和skim实现tex与pdf跳转</title>
-    <url>/2021/03/30/latex-pdf/</url>
-    <content><![CDATA[<p>我们在使用latex撰写论文时，希望可以从tex源码跳到PDF文件相应的位置，查看生成的PDF文件。相反的，如果我们在浏览PDF文件时，希望对某处进行修改，但是手动寻找tex源码对应PDF的位置比较浪费时间，本文可解决上述问题。</p>
-<span id="more"></span>
-
-<h3 id="软硬件配置"><a href="#软硬件配置" class="headerlink" title="软硬件配置"></a>软硬件配置</h3><p>​    终端：Macos  11.1</p>
-<p>​    编辑器：VSCode</p>
-<p>​    PDF查看：Skim</p>
-<h3 id="VSCode-配置（settings-json文件）"><a href="#VSCode-配置（settings-json文件）" class="headerlink" title="VSCode 配置（settings.json文件）"></a>VSCode 配置（settings.json文件）</h3><p>Mac端VSCode安装好Latex插件后，对VSCode 进行配置，配置代码如下</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="comment">//设置外部PDF预览</span></span><br><span class="line">&quot;latex-workshop.view.pdf.viewer&quot;: &quot;external&quot;,</span><br><span class="line"><span class="comment">// 设置使用skim打开并显示该行，快捷键：CMD+OPT+J</span></span><br><span class="line">    &quot;latex-workshop.view.pdf.external.viewer.command&quot;: &quot;/Applications/Skim.app/Contents/SharedSupport/displayline&quot;,</span><br><span class="line">    &quot;latex-workshop.view.pdf.external.viewer.args&quot;: [</span><br><span class="line">        &quot;0&quot;,</span><br><span class="line">        <span class="string">&quot;%PDF%&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    &quot;latex-workshop.view.pdf.external.synctex.command&quot;: &quot;//Applications/Skim.app/Contents/SharedSupport/displayline&quot;,</span><br><span class="line">    &quot;latex-workshop.view.pdf.external.synctex.args&quot;: [</span><br><span class="line">        &quot;-r&quot;,</span><br><span class="line">        &quot;%LINE%&quot;,</span><br><span class="line">        &quot;%PDF%&quot;,</span><br><span class="line">        &quot;%TEX%&quot;,</span><br><span class="line">    ],</span><br></pre></td></tr></table></figure>
-
-<p>使用方法：将光标移到想要跳转的tex源码处，快捷键 <code> opt+cmd+J</code> 可跳转到PDF文件中对应tex源码的位置 </p>
-<h3 id="Skim-配置"><a href="#Skim-配置" class="headerlink" title="Skim 配置"></a>Skim 配置</h3><p>对Skim设置如下：</p>
-<p>PDF-Tex同步支持：</p>
-<p>预设：选择VSCode</p>
-<p>命令：open</p>
-<p>参数： <code>vscode://file&quot;%file&quot;:%line</code></p>
-<p>使用方法：在Skim打开的PDF文件中，按住快捷键 <code> shift+cmd+鼠标左键点击</code>可跳转到tex源码</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
-      <tags>
-        <tag>latex</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>笔记APP推荐</title>
-    <url>/2021/04/05/note/</url>
-    <content><![CDATA[<p>本文总结了自己平时比较常用的几款软件，主要用于日常的文献阅读，做笔记和论文撰写</p>
-<span id="more"></span>
-
-<p>主要分以下四个场景：</p>
-<ol>
-<li>文档类笔记：这类笔记的特点是文字多，有较为清晰的层次逻辑</li>
-<li>手写笔记+OCR识别：这类笔记主要面向数学公式相关的笔记</li>
-<li>云同步</li>
-<li>提醒事项</li>
-</ol>
-<p>推荐的软件有：Typora，GoodNotes，Mathnip，Onedrive，滴答清单</p>
-<ol>
-<li>推荐使用Markdown进行笔记撰写，编辑器可用Typora，这款编辑器界面简洁，支持Mac/PC等多平台，此外在Mac平台还有一款熊掌记（Bear），UI十分漂亮，但是同步需要订阅且只支持苹果设备，为知笔记，印象笔记等也支持云同步和Markdown语法，功能十分完善，但也正因为如此，其复杂的功能反而导致学习成本的增加与日常使用的复杂</li>
-<li>手写笔记：Ipad + Apple pencil，软件推荐GoodNotes（50块），可以通过iCloud等云同步，也可以导出PDF进行分享。嫌贵的小伙伴可以考虑OneNote，缺点是同步速度较慢，当我们手写完公式之后，配合Mathpix就可以将手写公式识别为latex语法，写论文时可以省很多功夫</li>
-<li>如果你是学生，正好你的学校有微软教育服务，就可以去申请高达5T的Onedrive 存储空间，用来多设备文件同步，当然，也可以用坚果云代替，坚果云同步速度快</li>
-<li>提醒事项推荐滴答清单，可以智能识别日期，配合apple watch ，多设备同步，体验非常好</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>APP</tag>
-        <tag>note</tag>
       </tags>
   </entry>
 </search>
