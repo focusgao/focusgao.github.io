@@ -92,6 +92,30 @@
       </tags>
   </entry>
   <entry>
+    <title>Mac端基于vscode和skim实现tex与pdf跳转</title>
+    <url>/2021/03/30/latex-pdf/</url>
+    <content><![CDATA[<p>我们在使用latex撰写论文时，希望可以从tex源码跳到PDF文件相应的位置，查看生成的PDF文件。相反的，如果我们在浏览PDF文件时，希望对某处进行修改，但是手动寻找tex源码对应PDF的位置比较浪费时间，本文可解决上述问题。</p>
+<span id="more"></span>
+
+<h3 id="软硬件配置"><a href="#软硬件配置" class="headerlink" title="软硬件配置"></a>软硬件配置</h3><p>​    终端：Macos  11.1</p>
+<p>​    编辑器：VSCode</p>
+<p>​    PDF查看：Skim</p>
+<h3 id="VSCode-配置（settings-json文件）"><a href="#VSCode-配置（settings-json文件）" class="headerlink" title="VSCode 配置（settings.json文件）"></a>VSCode 配置（settings.json文件）</h3><p>Mac端VSCode安装好Latex插件后，对VSCode 进行配置，配置代码如下</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="comment">//设置外部PDF预览</span></span><br><span class="line">&quot;latex-workshop.view.pdf.viewer&quot;: &quot;external&quot;,</span><br><span class="line"><span class="comment">// 设置使用skim打开并显示该行，快捷键：CMD+OPT+J</span></span><br><span class="line">    &quot;latex-workshop.view.pdf.external.viewer.command&quot;: &quot;/Applications/Skim.app/Contents/SharedSupport/displayline&quot;,</span><br><span class="line">    &quot;latex-workshop.view.pdf.external.viewer.args&quot;: [</span><br><span class="line">        &quot;0&quot;,</span><br><span class="line">        <span class="string">&quot;%PDF%&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    &quot;latex-workshop.view.pdf.external.synctex.command&quot;: &quot;//Applications/Skim.app/Contents/SharedSupport/displayline&quot;,</span><br><span class="line">    &quot;latex-workshop.view.pdf.external.synctex.args&quot;: [</span><br><span class="line">        &quot;-r&quot;,</span><br><span class="line">        &quot;%LINE%&quot;,</span><br><span class="line">        &quot;%PDF%&quot;,</span><br><span class="line">        &quot;%TEX%&quot;,</span><br><span class="line">    ],</span><br></pre></td></tr></table></figure>
+
+<p>使用方法：将光标移到想要跳转的tex源码处，快捷键 <code> opt+cmd+J</code> 可跳转到PDF文件中对应tex源码的位置 </p>
+<h3 id="Skim-配置"><a href="#Skim-配置" class="headerlink" title="Skim 配置"></a>Skim 配置</h3><p>对Skim设置如下：</p>
+<p>PDF-Tex同步支持：</p>
+<p>预设：选择VSCode</p>
+<p>命令：open</p>
+<p>参数： <code>vscode://file&quot;%file&quot;:%line</code></p>
+<p>使用方法：在Skim打开的PDF文件中，按住快捷键 <code> shift+cmd+鼠标左键点击</code>可跳转到tex源码</p>
+<h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
+      <tags>
+        <tag>latex</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>通过 AWS 安装SS</title>
     <url>/2021/05/28/install-ss/</url>
     <content><![CDATA[<p>AWS （亚马逊云计算服务）新用户可免费使用一年，白嫖怪冲啊！</p>
@@ -127,6 +151,15 @@
       </tags>
   </entry>
   <entry>
+    <title>mybaby</title>
+    <url>/2022/05/19/mybaby/</url>
+    <content><![CDATA[<p><img src="/images/love.jpg" alt="love"></p>
+]]></content>
+      <tags>
+        <tag>LOVE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>笔记APP推荐</title>
     <url>/2021/04/05/note/</url>
     <content><![CDATA[<p>本文总结了自己平时比较常用的几款软件，主要用于日常的文献阅读，做笔记和论文撰写</p>
@@ -150,39 +183,6 @@
       <tags>
         <tag>APP</tag>
         <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mybaby</title>
-    <url>/2022/05/19/mybaby/</url>
-    <content><![CDATA[<p><img src="/.io//05/19/mybaby/love.jpg" alt="love"></p>
-]]></content>
-      <tags>
-        <tag>LOVE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac端基于vscode和skim实现tex与pdf跳转</title>
-    <url>/2021/03/30/latex-pdf/</url>
-    <content><![CDATA[<p>我们在使用latex撰写论文时，希望可以从tex源码跳到PDF文件相应的位置，查看生成的PDF文件。相反的，如果我们在浏览PDF文件时，希望对某处进行修改，但是手动寻找tex源码对应PDF的位置比较浪费时间，本文可解决上述问题。</p>
-<span id="more"></span>
-
-<h3 id="软硬件配置"><a href="#软硬件配置" class="headerlink" title="软硬件配置"></a>软硬件配置</h3><p>​    终端：Macos  11.1</p>
-<p>​    编辑器：VSCode</p>
-<p>​    PDF查看：Skim</p>
-<h3 id="VSCode-配置（settings-json文件）"><a href="#VSCode-配置（settings-json文件）" class="headerlink" title="VSCode 配置（settings.json文件）"></a>VSCode 配置（settings.json文件）</h3><p>Mac端VSCode安装好Latex插件后，对VSCode 进行配置，配置代码如下</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="comment">//设置外部PDF预览</span></span><br><span class="line">&quot;latex-workshop.view.pdf.viewer&quot;: &quot;external&quot;,</span><br><span class="line"><span class="comment">// 设置使用skim打开并显示该行，快捷键：CMD+OPT+J</span></span><br><span class="line">    &quot;latex-workshop.view.pdf.external.viewer.command&quot;: &quot;/Applications/Skim.app/Contents/SharedSupport/displayline&quot;,</span><br><span class="line">    &quot;latex-workshop.view.pdf.external.viewer.args&quot;: [</span><br><span class="line">        &quot;0&quot;,</span><br><span class="line">        <span class="string">&quot;%PDF%&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    &quot;latex-workshop.view.pdf.external.synctex.command&quot;: &quot;//Applications/Skim.app/Contents/SharedSupport/displayline&quot;,</span><br><span class="line">    &quot;latex-workshop.view.pdf.external.synctex.args&quot;: [</span><br><span class="line">        &quot;-r&quot;,</span><br><span class="line">        &quot;%LINE%&quot;,</span><br><span class="line">        &quot;%PDF%&quot;,</span><br><span class="line">        &quot;%TEX%&quot;,</span><br><span class="line">    ],</span><br></pre></td></tr></table></figure>
-
-<p>使用方法：将光标移到想要跳转的tex源码处，快捷键 <code> opt+cmd+J</code> 可跳转到PDF文件中对应tex源码的位置 </p>
-<h3 id="Skim-配置"><a href="#Skim-配置" class="headerlink" title="Skim 配置"></a>Skim 配置</h3><p>对Skim设置如下：</p>
-<p>PDF-Tex同步支持：</p>
-<p>预设：选择VSCode</p>
-<p>命令：open</p>
-<p>参数： <code>vscode://file&quot;%file&quot;:%line</code></p>
-<p>使用方法：在Skim打开的PDF文件中，按住快捷键 <code> shift+cmd+鼠标左键点击</code>可跳转到tex源码</p>
-<h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
-      <tags>
-        <tag>latex</tag>
       </tags>
   </entry>
   <entry>
